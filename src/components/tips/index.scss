@@ -1,0 +1,40 @@
+.test-box{
+    width: 700rpx;
+    background: #ffffff;
+    box-shadow: 10rpx 0 40rpx 0 rgba(67,67,67,0.08);
+    border-radius: 10rpx;
+    padding: 32rpx 34rpx 24rpx;
+    display: flex;
+    align-items:  center;
+    justify-content: space-between;
+    position: relative;
+    top: -30rpx;
+    margin: auto;
+    .test-title{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        font-family: PingFangSC-Regular;
+        Text:nth-of-type(1){
+            font-size: 24rpx;
+            color: #000000;
+        }
+        Text:nth-of-type(2){
+            font-size: 48rpx;
+            color:  #333333;
+        }
+    }
+    Button{
+        width: 160rpx;
+        height: 56rpx;
+        background: #346BF5;
+        border-radius: 28rpx;
+        font-family: PingFangSC-Regular;
+        font-size: 28rpx;
+        color: #FFFFFF;
+        letter-spacing: 0;
+        line-height: 56rpx;
+        margin: 0;
+        padding: 0;
+    }
+}
