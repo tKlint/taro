@@ -1,10 +1,11 @@
 .task-content{
-    padding: 24rpx 30rpx 30rpx;
+    padding: 0rpx 30rpx 30rpx;
     .task-type-title{
         font-family: PingFangSC-Medium;
         font-size: 32rpx;
         color: #000000;
         letter-spacing: 0;
+        margin-bottom: 10rpx;
     }
     .task-item{
         display: flex;
@@ -13,10 +14,22 @@
         background: #FFFFFF;
         box-shadow: 10rpx 0 40rpx 0 rgba(67,67,67,0.08);
         border-radius: 16rpx;
+        padding: 28rpx 40rpx 30rpx;
+        margin-top: 20rpx;
         .task-detail{
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
+        .company-name{
+            margin-top: 22rpx;
+            font-family: PingFangSC-Regular;
+            font-size: 28rpx;
+            color: #9B9B9B;
+            letter-spacing: 0;
+        }
     }
+    .task-item:active{
+		background: #ebebeb;
+	}
 }

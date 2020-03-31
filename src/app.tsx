@@ -4,7 +4,7 @@ import { Provider } from '@tarojs/redux'
 import configStore from './store'
 // import router from './router'
 import './app.scss'
-
+import 'taro-ui/dist/style/index.scss'
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
@@ -35,6 +35,7 @@ class App extends Component {
       'pages/index/index',
       'pages/myTask/index',
       'pages/wage/index',
+      'pages/mine/index',
     ],
     window: {
       navigationStyle: 'custom'
@@ -55,6 +56,11 @@ class App extends Component {
         text: "收入",
         iconPath: "static/icon/income.png",
         selectedIconPath: "static/icon/income-active.png"
+      },{
+        pagePath: "pages/mine/index",
+        text: "我的",
+        iconPath: "static/icon/my.png",
+        selectedIconPath: "static/icon/my-active.png"
       }],
       color: '#bdbdbd',
       selectedColor: '#346BF5',

@@ -1,5 +1,6 @@
 import Taro, { useEffect, useState } from '@tarojs/taro';
-import { View, Text, Image } from '@tarojs/components';
+import { View, Text, Image,Button } from '@tarojs/components';
+import { AtModal, AtModalHeader, AtModalContent, AtModalAction } from "taro-ui";
 import BannerSwiper from '../../components/swiper';
 import TestTool from '../../components/tips'
 import TaskList from '../../components/taskList'
@@ -7,7 +8,6 @@ import TaskList from '../../components/taskList'
 // import NavBar from 'taro-navbar';
 import './index.scss'
 import store from '../../store'
-
 interface NavItemFace {
   title: string;
   src: string;
@@ -18,7 +18,7 @@ function Index () {
   //存储用户登录状态/手机号
   let [phone, setPhone] = useState<string|number[]>('');
   //首页导航入口
-  let [navItem, setNavItem] = useState<NavItemFace[]>([
+  let [navItem] = useState<NavItemFace[]>([
     {
       title: '任务大厅',
       src:  'xx',
@@ -40,6 +40,7 @@ function Index () {
       icon: require('../../static/icon/messages.png')
     }
   ]);
+  let [isopen,setIsopen] = useState<boolean>(false)
   //未登录下公开任务
   let openTaskData = {
     title: '最新任务',
@@ -87,25 +88,41 @@ function Index () {
   //     }
   //   })
   // }
+  const loginModal = function() {
+    setIsopen(true);
+}
   return (
     <View>
       <BannerSwiper />
       {/* 测评小工具只再未登录是显示 */}
-      {phone ? '' : <TestTool />}
+      {phone ? null : <View className="test-warp"><TestTool/></View>}
       <View className="nav-list">
         {navItem.map(item => {
-          return(
-            <View key={item.title} className="nav-item" onClick={() => {
-              navToSomeUrl(item);
-            }}>
-              <Image className="nav-icon" src={item.icon} />
-              <Text>{item.title}</Text>
-            </View>
-          )
-        })}
+            return(
+              <View key={item.title} className="nav-item" onClick={() => {
+                // navToSomeUrl(item);
+                loginModal();
+              }}>
+                <Image className="nav-icon" src={item.icon} />
+                <Text>{item.title}</Text>
+              </View>
+            )
+          })}
       </View>
-      {phone ? <TaskList prop={assignedTasks}/> : <TaskList prop={openTaskData} />}
-        
+      {phone ? <
+        TaskList prop={assignedTasks}/> : 
+        <TaskList prop={openTaskData} maxCount={3} />
+      }
+      <AtModal isOpened={true}>
+        <AtModalHeader>标题</AtModalHeader>
+        <AtModalContent>
+            这里是正文内容，欢迎加入京东凹凸实验室
+            这里是正文内容，欢迎加入京东凹凸实验室
+            这里是正文内容，欢迎加入京东凹凸实验室
+        </AtModalContent>
+        <AtModalAction> <Button>取消</Button> <Button>确定</Button> </AtModalAction>
+      </AtModal>
+      <Button onClick={() => {loginModal()}}>ok</Button>
     </View>
   )
 }

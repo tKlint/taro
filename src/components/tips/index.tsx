@@ -1,6 +1,5 @@
-import Taro, { useEffect } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
 import { View, Text, Button } from '@tarojs/components';
-import store from '../../store'
 import './index.scss'
 function TestTool() {
 
