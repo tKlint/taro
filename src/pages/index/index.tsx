@@ -1,6 +1,6 @@
 import Taro, { useEffect, useState } from '@tarojs/taro';
 import { View, Text, Image,Button } from '@tarojs/components';
-import { AtModal, AtModalHeader, AtModalContent, AtModalAction } from "taro-ui";
+import { AtModal, AtModalContent } from "taro-ui";
 import BannerSwiper from '../../components/swiper';
 import TestTool from '../../components/tips'
 import TaskList from '../../components/taskList'
@@ -90,7 +90,14 @@ function Index () {
   // }
   const loginModal = function() {
     setIsopen(true);
-}
+  }
+  const toLoginPage = function() {
+    setIsopen(false);
+    console.log('去登录');
+    Taro.navigateTo({
+      url: '/pages/login'
+    })
+  }
   return (
     <View>
       <BannerSwiper />
@@ -100,8 +107,7 @@ function Index () {
         {navItem.map(item => {
             return(
               <View key={item.title} className="nav-item" onClick={() => {
-                // navToSomeUrl(item);
-                loginModal();
+                navToSomeUrl(item);
               }}>
                 <Image className="nav-icon" src={item.icon} />
                 <Text>{item.title}</Text>
@@ -109,20 +115,19 @@ function Index () {
             )
           })}
       </View>
-      {phone ? <
-        TaskList prop={assignedTasks}/> : 
-        <TaskList prop={openTaskData} maxCount={3} />
+      {phone ?
+        <TaskList prop={assignedTasks} handleClick={()=>{}} maxCount={3} /> : 
+        <TaskList prop={openTaskData} handleClick={loginModal} maxCount={3} />
       }
-      <AtModal isOpened={true}>
-        <AtModalHeader>标题</AtModalHeader>
+      <AtModal isOpened={isopen}>
         <AtModalContent>
-            这里是正文内容，欢迎加入京东凹凸实验室
-            这里是正文内容，欢迎加入京东凹凸实验室
-            这里是正文内容，欢迎加入京东凹凸实验室
+           <View className="modal-box">
+              <View className="login-modal">您还未登录</View>
+              <View className="login-modal">请先登录</View>
+              <Button className="mini-btn" onClick={()=>{toLoginPage()}}>立即登录</Button>
+           </View>
         </AtModalContent>
-        <AtModalAction> <Button>取消</Button> <Button>确定</Button> </AtModalAction>
       </AtModal>
-      <Button onClick={() => {loginModal()}}>ok</Button>
     </View>
   )
 }

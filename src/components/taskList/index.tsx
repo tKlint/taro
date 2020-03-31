@@ -17,6 +17,12 @@ function TaskList(props) {
         taskList: []
     });
     let [maxCount, setMaxCount] = useState<number|string>(0);
+    // let [handleClick, setHancleClick] = useState<Function>(function(){});
+    let handleClick = function(item) {
+        // console.log(props);
+        props.handleClick ?  props.handleClick() : console.log(item);
+       
+    }
     useEffect(() => {
         setTaskData({
             title: props.prop.title,
@@ -33,7 +39,7 @@ function TaskList(props) {
                     return (
                         // 最多只显示3个任务
                         index < maxCount ? 
-                        <View className="task-item" key={index}>
+                        <View className="task-item" key={item.taskName} onClick={()=>{handleClick(item)}}>
                             <View className="task-detail">
                                 <View>{item.taskName}</View>
                                 <View>{item.stateText}</View>
