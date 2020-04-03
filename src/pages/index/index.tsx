@@ -1,10 +1,10 @@
 import Taro, { useEffect, useState } from '@tarojs/taro';
 import { View, Text, Image,Button } from '@tarojs/components';
-import { AtModal, AtModalContent } from "taro-ui";
+import { AtModal, AtModalContent, AtNavBar } from "taro-ui";
 import BannerSwiper from '../../components/swiper';
 import TestTool from '../../components/tips'
 import TaskList from '../../components/taskList'
-// import {connect} from '@tarojs/redux'
+import {useSelector} from '@tarojs/redux'
 // import NavBar from 'taro-navbar';
 import './index.scss'
 import store from '../../store'
@@ -13,10 +13,13 @@ interface NavItemFace {
   src: string;
   icon: string;
 }
+interface RootState {
+  phone: string | number;
+}
 
 function Index () {
   //存储用户登录状态/手机号
-  let [phone, setPhone] = useState<string|number[]>('');
+  let [phone, setPhone] = useState<string|number>('');
   //首页导航入口
   let [navItem] = useState<NavItemFace[]>([
     {
@@ -67,10 +70,12 @@ function Index () {
     title: '指派任务',
     taskList: []
   }
+  const loadingEffect = useSelector((state:RootState) =>state.phone);
+  console.log(loadingEffect);
   useEffect(()=>{
     //从store内获取获取用户登录状态/手机号
     setPhone(store.getState().phone);
-    //监听用户登录状态变化
+    //监听用户登录状态变    
     store.subscribe(()=>{
       //同步登录状态
       setPhone(store.getState().phone);
@@ -94,12 +99,19 @@ function Index () {
   const toLoginPage = function() {
     setIsopen(false);
     console.log('去登录');
-    Taro.navigateTo({
-      url: '/pages/login'
+    Taro.redirectTo({
+      url: '/pages/login/index'
     })
   }
+  const systemnfo = Taro.getSystemInfoSync();
   return (
     <View>
+      <AtNavBar 
+      color="#ffffff"
+      fixed
+      >
+        <View style={"height:" + (systemnfo.statusBarHeight+44)+'px;padding-top:' + systemnfo.statusBarHeight + 'px'} className="nav-title">筑商</View>
+      </AtNavBar>
       <BannerSwiper />
       {/* 测评小工具只再未登录是显示 */}
       {phone ? null : <View className="test-warp"><TestTool/></View>}
@@ -131,7 +143,6 @@ function Index () {
     </View>
   )
 }
-
 export default Index;
 
 

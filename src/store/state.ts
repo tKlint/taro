@@ -1,21 +1,19 @@
-/* ============================================================================= 
-#
-# Date: 2020-03-26 09:41:05
-# LastEditors: gzk
-# LastEditTime: 2020-03-26 19:46:36
-#
-============================================================================= */
-/* ============================================================================= 
-#
-# Date: 2020-03-26 09:41:05
-# LastEditors: gzk
-# LastEditTime: 2020-03-26 09:41:05
-#
-============================================================================= */
 interface RootState {
-    phone: string | number
+    phone: string | number;
+    assignedTask: Array<Task>;
+    myTask: Array<Task>;
+}
+interface Task {
+    id: number;
+    task_name: string;
+    ensureMoney: number;
+    businessName: string;
+    taskStatus: number;
+    taskDescription: Array<string>;
 }
 const rootState: RootState = {
-    phone: ''
+    phone: '',
+    assignedTask: [],
+    myTask: []
 }
 export default rootState

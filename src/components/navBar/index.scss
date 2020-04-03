@@ -1,0 +1,21 @@
+.navbar-box{
+    background: #346BF5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    Image{
+        width: 35rpx;
+        height: 35rpx;
+    }
+    .nav-item{
+        flex: 1;
+    }
+    .navbar-title{
+        text-align: center;
+        color: #ffffff;
+    }
+}

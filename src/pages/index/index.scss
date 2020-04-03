@@ -43,3 +43,14 @@
     letter-spacing: 0;
     text-align: center;
 }
+.at-nav-bar{
+    background: none;
+}
+.nav-title{
+    height: 135rpx;
+    font-size: 32rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

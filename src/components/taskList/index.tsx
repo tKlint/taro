@@ -17,9 +17,7 @@ function TaskList(props) {
         taskList: []
     });
     let [maxCount, setMaxCount] = useState<number|string>(0);
-    // let [handleClick, setHancleClick] = useState<Function>(function(){});
     let handleClick = function(item) {
-        // console.log(props);
         props.handleClick ?  props.handleClick() : console.log(item);
        
     }
