@@ -1,5 +1,6 @@
-import Taro, { useEffect } from '@tarojs/taro';
-import { Text, View } from '@tarojs/components';
+import Taro, { useEffect, useState } from '@tarojs/taro';
+import { Text, View, Image } from '@tarojs/components';
+import { AtInput }  from 'taro-ui'
 // import store from '../../store'
 import NavBar from '../../components/navBar'
 import './index.scss'
@@ -18,10 +19,15 @@ function Login() {
     //   })
     // })
   })
+  const [phone, setPhone] = useState<string|never>('');
   const backHome = function() {
-    Taro.reLaunch({
-      url:'pages/index/index'
+    Taro.switchTab({
+      url: '../index/index'
     })
+  }
+  const inputedPhone = function(e) {
+    setPhone(e);
+    console.log(e);
   }
   return (
     <View>
@@ -30,20 +36,25 @@ function Login() {
         title=""
         icon="home"
       />
-      {/* <NavBar
-        isHome
-        title='' 
-        background='#346BF5' 
-        color='#ffffff' 
-        search
-        headerRight={[
-          {icon: {color: '#6afff9'}},
-          {icon: '\ue63a'},
-        ]}
-      /> */}
-      <Text>
-        登录
-      </Text>
+      <View className="content-box">
+        <View className="logo-box">
+          <Image src="../../static/icon/logo.png" />
+        </View>
+        <View>
+          <View>
+            <AtInput 
+              name='userPhone'
+              title='?????'
+              type='number'
+              maxLength={11}
+              placeholder='??????'
+              value={phone}
+              onChange={e=>{ inputedPhone(e)}}
+            />
+          </View>
+          {phone}
+        </View>
+      </View>
     </View>
   )
 }

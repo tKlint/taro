@@ -1,8 +1,5 @@
 .navbar-box{
     background: #346BF5;
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100vw;
     display: flex;
     align-items: center;
@@ -18,4 +15,9 @@
         text-align: center;
         color: #ffffff;
     }
+}
+.custom-box{
+    position: fixed;
+    top: 0;
+    left: 0;
 }
