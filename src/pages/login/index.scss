@@ -7,5 +7,21 @@
            height: 160rpx;
            border-radius: 50%;
        }
-   } 
+    }
+    .form-box{
+        padding: 0 40rpx;
+        .at-input__title{
+            font-family: PingFangSC-Regular;
+            font-size: 28rpx;
+            color: #222222;
+            width: auto;
+            margin-right: 60rpx;
+        }
+        .at-input{
+            padding: 20rpx;
+            border-bottom: 2rpx solid rgba(221,221,221,0.40);
+            font-size: 28rpx;
+            margin: auto;
+        }
+    }
 }

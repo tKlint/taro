@@ -1,5 +1,5 @@
 import Taro, { useEffect, useState } from '@tarojs/taro';
-import { Text, View, Image } from '@tarojs/components';
+import { View, Image } from '@tarojs/components';
 import { AtInput }  from 'taro-ui'
 // import store from '../../store'
 import NavBar from '../../components/navBar'
@@ -25,9 +25,8 @@ function Login() {
       url: '../index/index'
     })
   }
-  const inputedPhone = function(e) {
-    setPhone(e);
-    console.log(e);
+  const inputedPhone = function(e: number) {
+    setPhone(e.toString());
   }
   return (
     <View>
@@ -40,17 +39,17 @@ function Login() {
         <View className="logo-box">
           <Image src="../../static/icon/logo.png" />
         </View>
-        <View>
-          <View>
-            <AtInput 
-              name='userPhone'
-              title='?????'
-              type='number'
-              maxLength={11}
-              placeholder='??????'
-              value={phone}
-              onChange={e=>{ inputedPhone(e)}}
-            />
+        <View className="form-box">
+          <View className="phone-box input-item">
+              <AtInput 
+                name='userPhone'
+                title='手机号'
+                type='phone'
+                maxLength={11}
+                placeholder='请输入您的手机号码'
+                value={phone}
+                onChange={ inputedPhone}
+              />
           </View>
           {phone}
         </View>
