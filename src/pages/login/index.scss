@@ -18,10 +18,55 @@
             margin-right: 60rpx;
         }
         .at-input{
-            padding: 20rpx;
+            padding: 20rpx 0 20rpx 20rpx;
             border-bottom: 2rpx solid rgba(221,221,221,0.40);
             font-size: 28rpx;
             margin: auto;
+            .at-input__input{
+                font-size: 28rpx;
+            }
+        }
+        .code-box{
+            .at-input__children::after{
+                border: none;
+            }
+            .at-button{
+                border: none;
+                line-height: auto;
+                line-height: 44rpx;
+                height: auto;
+                padding: 0;
+                font-size: 28rpx;
+            }
+        }
+        .next-btn{
+            color: #346BF5;
+        }
+        .create-btn{
+            color: #346BF5;
+        }
+        .agrement-box{
+            display: flex;
+            margin-top: 20rpx;
+            .like-radio{
+                margin-right: 20rpx;
+                Image{
+                    width: 28rpx;
+                    height: 28rpx;
+                }
+            }
+        }
+        .pdf-box{
+            font-family: PingFangSC-Regular;
+            font-size: 28rpx;
+            color: #444444;
+            .pdf-link{
+                color: #346BF5;
+                margin: 5rpx;
+            }
+        }
+        .login-btn{
+            margin-top: 60rpx;
         }
     }
 }
